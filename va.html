@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convo Craft - A Chaperone</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <!-- <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        body{
+            background-color: #d6efee;
+        }
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+        @import url("https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+        header {
+            width: 100%;
+            top: 0;
+            position: fixed;
+            z-index: 2;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        h4 {
+            color: white;
+            padding-left: 20px;
+        }
+
+        nav>div {
+            padding: 0.65rem 0;
+            background-color: #41C9E2;
+            border-radius: 50px;
+            color: white;
+
+        }
+
+        .radius-50 {
+            border-radius: 1rem;
+        }
+
+        .collapse:not(.show) .nav-link {
+            font-size: 1rem;
+            color: #ffffff;
+            padding: 4px 1rem !important;
+        }
+
+        .nav-link:hover {
+            border-radius: 20px;
+            box-shadow: 0px 0px 2px 2px #609ea9;
+        }
+
+        .menu:focus {
+            box-shadow: none;
+        }
+
+        .menu i {
+            color: #fff;
+            font-size: 1.8rem;
+
+        }
+
+        .logo h1 {
+            font-size: 1.8rem !important;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .cam {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 150vh;
+            margin: 0;
+        }
+
+        .tcam {
+            margin-bottom: 20px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 640px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cam button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            background-color: #41C9E2;
+            color: rgb(255, 255, 255);
+            font-weight: 100px;
+            font-style: normal;
+        }
+        .cam button:hover{
+            color: #ffffff;
+            background-color:#007f95;
+            font-weight: 600px;
+        }
+
+        .custom-me-auto {
+            margin-right: 23%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-transparent mt-2">
+            <div class="container-fluid container-lg" id="round-onclick">
+                <a class="logo d-lg-none d-block text-decoration-none" href="#">
+                    <h1>ConvoCraft</h1>
+                </a>
+                <button class="navbar-toggler menu border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list" id="menu"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav me-auto">
+                        <div class="nav-item">
+                            <a class="logo d-md-block text-decoration-none d-none" href="#">
+                                <h4>Verbal Interview</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <a class="logo d-lg-block text-decoration-none d-none" href="#">
+                        <h1>ConvoCraft</h1>
+                    </a>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#team">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="cam">
+        <div class="tcam"></div>
+
+        <button onclick="toggleCamera()">Toggle Camera</button><br>
+        <button onclick="verbal_bot()">Start</button><br>
+    </div>
+    <script type="text/python">
+        from pyscript import PyScript
+        
+        class EnableDisableCamera(PyScript):
+            def toggle_camera(self):
+                # Placeholder for Python code if needed
+                pass
+        
+        enable_disable_camera = EnableDisableCamera()
+        </script>
+
+
+    <script>
+        let stream = null;
+
+        function toggleCamera() {
+            if (stream === null) {
+                enableCamera();
+            } else {
+                disableCamera();
+            }
+        }
+
+        function enableCamera() {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+                .then(function (newStream) {
+                    stream = newStream;
+                    var videoElement = document.createElement('video');
+                    document.getElementById('video-container').appendChild(videoElement);
+
+                    videoElement.srcObject = stream;
+                    videoElement.play();
+                })
+                .catch(function (error) {
+                    console.error('Error accessing front camera:', error);
+                });
+        }
+
+        function disableCamera() {
+            if (stream !== null) {
+                let tracks = stream.getTracks();
+                tracks.forEach(track => track.stop());
+                stream = null;
+
+                // Remove the video element
+                var videoElement = document.querySelector('video');
+                if (videoElement) {
+                    videoElement.parentNode.removeChild(videoElement);
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function speech_bot() {
+            window.location.href = '/speech_bot';
+        }
+    </script>
+</body>
+
+</html>

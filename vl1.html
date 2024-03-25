@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convo Craft - A Chaperone</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <!-- <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+
+    <style>
+        .highlighted-division {
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 20px;
+            position: relative;
+            top: 60px;
+            z-index: 1;
+        }
+        
+         .btnn {
+            font-size: large;
+            color: #ddd;
+            position: relative;
+            z-index: 1;
+            padding: 10px;
+            margin: 0px;
+            border-radius: 3px;
+            background-color: rgb(28, 215, 37);
+            border-color: none;
+            font-weight: 10;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <video autoplay muted loop id="myVideo">
+        <source src="src/bgeffect.mp4" type="video/mp4">
+    </video>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-transparent mt-2">
+            <div class="container-fluid container-lg" id="round-onclick">
+                <a class="logo d-lg-none d-block text-decoration-none" href="#">
+                    <h1>ConvoCraf</h1>
+                </a>
+                <button class="navbar-toggler menu border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list" id="menu"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="logo d-lg-block text-decoration-none d-none" href="#">
+                                <h4>Verbal Interview</h4>
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="logo d-lg-block text-decoration-none d-none" href="#">
+                        <h1>ConvoCraft</h1>
+                    </a>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#team">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="highlighted-division">
+        <h5 style="color: rgb(255, 255, 255);"><b>Instruction</b></h4><br>
+        <div>1. Sit in a silent room without any noises. Ensure that no one enters while you are
+            speaking.</div><br>
+        <div>2. The best aid here is to listen to the question carefully, think and answer
+            promptly.</div><br>
+        <div>3. Inside the interview tab you will have a Toggle camera button. Kindly turn on
+            your video using that.</div><br>
+        <div>4. After pressing toggle camera click on start and kindly wait for 5-10 Seconds for
+            the bot to start your interview Process.</div><br>
+        <div>5. When you are ready press Start.</div><br>
+        <div class="technicaltest">
+            <a href="va.html"><button class="btnn" >Start</button></a>
+        </div>
+    </div>
+   
+
+
+</body>
+
+</html>
